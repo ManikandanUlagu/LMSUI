@@ -1,0 +1,69 @@
+<div class="container">
+  <table class="table table-condensed">
+    <thead>
+      <tr>
+        <th>Personal Load Topup or Apply</th>
+        <th></th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>To appy topup ....</td>
+        <td>Carryover or payamount ${{sum}}</td>
+        <td><button type="button" [disabled]="showbtnInc"     class="btn">Apply for increased Loan Amount</button>
+        </td>
+      </tr>
+      <tr>
+        <td></td>
+        <td></td>
+        <td><button  [disabled]="showApply"  type="button" class="btn">Apply for personal loan</button>
+        </td>
+      </tr>
+      <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="container">
+
+  <div *ngFor="let item of loanlist | slice:0:half">
+    <div class="panel panel-default">
+      <table class="table">
+        <thead>
+          <tr>
+            <th>{{item.LoanName}}</th>
+            <th></th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Balance</td>
+            <td>{{item.Balance}}</td>
+            <td><input type="checkbox" (change)="change($event,item)"></td>
+          </tr>
+          <tr *ngIf="item.showdetails">
+            <td>Balance includes interest of</td>
+            <td>{{item.Interest}}</td>
+          </tr>
+          <tr *ngIf="item.showdetails">
+            <td>early repayment fee</td>
+            <td>{{item.Payout}}</td>
+          </tr>
+          <tr *ngIf="item.showdetails">
+            <td>payout/carryover</td>
+            <td>{{item.Repay}}</td>
+          </tr>
+        </tbody>
+      </table>
+
+    </div>
+
+  </div>
+
+</div>
